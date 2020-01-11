@@ -1,0 +1,13 @@
+body {
+	background-image:url('../img/backimg.jpg');
+	background-color:white;
+}
+
+input.btn_theme {
+	
+	background-repeat: no-repeat;
+	width: 200px;
+	height: 200px;
+	border: 2px red solid;
+	margin: 50px;
+}
