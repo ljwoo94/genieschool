@@ -1,16 +1,102 @@
-{% extends 'layout.html' %}
+<html>
+	<head>
 
-	{% block content %}
-	<br><br>
-	<center><h1>Genie School!!</h1><br>
-	
-	<!--링크는 실시간으로 바꿔줘야 할 수도 있음. 
-	혹은 https://www.youtube.com/user/jw9411/live 사용해보기-->
-	<iframe width="1280" height="720" src="https://www.youtube.com/embed/5DQUKIzFfGo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+		<meta http-equiv="Content-Type" Content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="height=1080,width=1920,user-scalable=no"/>
 
-		<script>
-			alert("Theme Selected : Polite")
-			howToBow();
+		<link rel="stylesheet" href="../static/css/mainpage.css">
+		<link rel="stylesheet" href="../static/css/plyr.css">
+		<script type="text/javascript" src="https://svcapi.gigagenie.ai/sdk/v1.0/js/gigagenie.js"></script>
+
+		<script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
+
+		<title>Genie School KT Project</title>
+
+		<script type="text/javascript">
+		var apistatus=0;
+		var options={};
+		var ws;
+		var status='NI';
+		var appid;
+		var containerid;
+		var wsstate=0;
+		var initstate=0;
+		var authcode;
+
+		function init() {
+
+			//sendTTS("안녕하세요 ");
+
+
+			options = {};
+			options.apikey = "RTUwMDQwMTl8R0JPWERFVk18MTU3ODQ0Mzk3OTM0MA==";
+			options.keytype="GBOXDEVM"; // 개발자모드를 설정하고 사용하세요.
+			gigagenie.init(options, function(result_cd, result_msg, extra) {
+				if (result_cd === 200) {
+					console.log("initialize success, appid:" + extra.appid);
+
+					//안내 TTS
+					sendTTS("오늘은 멋있는 경찰이 되어 볼까요?");
+					//setTimeout(function() {
+					//location.href = "/result";
+					//}, 5000);
+					//Delay 후 send data.
+					//location.href = '/greeting';
+
+				}
+			});
+		};
+
+		function sendTTS(tts) {
+			options = {};
+			options.ttstext = tts;
+			gigagenie.voice.sendTTS(options, function(result_cd, result_msg, extra) {
+					console.log("gigagenie.voice.sendTTS - result_cd:" + result_cd);
+					console.log("gigagenie.voice.sendTTS - result_msg:" + result_msg);
+					console.log("gigagenie.voice.sendTTS - extra:" + JSON.stringify(extra));					});
+		};
+
+		gigagenie.voice.onRequestClose = function() {
+			console.log("close event received");
+			alert("종료요청받음");
+			requestclose();
+		};
+		function requestclose() {
+			console.log("request close");
+			options={};
+			gigagenie.voice.svcFinished(options, function(result_cd, result_msg, extra) {
+					console.log("svcFinished");
+					if(result_cd === 200) {
+						console.log("service finish success");
+						}
+
+					});
+		};
+
 		</script>
-	</center>
-{% endblock %}
+</head>
+<body onload="init();">
+
+	<!-- 영상하나 필요함. -->
+    <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="9ojZ5jPh1bg"></div>
+
+    <script type="text/javascript">
+
+        const player = new Plyr('#player', {
+			autoplay: 'true',
+			fullscreen: '{ enabled: true, fallback: true, iosNative: false }',
+			});
+		player.fullscreen.enter();
+
+        setTimeout(function(){
+            player.play();
+        },1000);
+
+        setTimeout(function() {
+          location.href = "/career_stream";
+        },10000);
+
+    </script>
+
+</body>
+</html>

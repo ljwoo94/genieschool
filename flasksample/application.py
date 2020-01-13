@@ -6,7 +6,7 @@ app = Flask(__name__)
 def start():
     return render_template("start.html")
 
-@app.route('/greeting')
+@app.route('/greet')
 def greeting():
 	return render_template('greet.html')
 
@@ -25,13 +25,21 @@ def politeStream():
 def career():
 	return render_template('career.html')
 
-@app.route('/sec_theme')
+@app.route('/career_stream')
+def careerStream():
+	return render_template('career_stream.html')
+
+@app.route('/security_theme')
 def security():
 	return render_template('security.html')
+@app.route('/security_stream')
+def securityStream():
+	return render_template('security_stream.html')
 
+#값을 받아와서 여기서 OK로 갈지, No로 갈지 판단.
 @app.route('/result')
 def result():
-	return render_template('result.html')
+	return render_template('result_ok.html')
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')

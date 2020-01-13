@@ -34,10 +34,11 @@
 					console.log("initialize success, appid:" + extra.appid);
 
 					//안내 TTS
-					sendTTS("따라해볼까요???");
-					//setTimeout(function() {
-					//location.href = "/result";
-					//}, 5000);
+					sendTTS("자 이제, 우리친구들 차례에요.");
+					sendTTS("한번 따라해 볼까요?");
+					setTimeout(function() {
+					location.href = "/result";
+					}, 10000);
 					//Delay 후 send data.
 					//location.href = '/greeting';
 
