@@ -34,9 +34,12 @@
 					console.log("initialize success, appid:" + extra.appid);
 
 					//안내 TTS
-					sendTTS("오늘은 어떤 공부를 할까요~?");
-					//Delay 넣어보기. 1000ms 정도.
-					//location.href = '/selecting';
+					sendTTS("따라해볼까요???");
+					//setTimeout(function() {
+					//location.href = "/result";
+					//}, 5000);
+					//Delay 후 send data.
+					//location.href = '/greeting';
 
 				}
 			});
@@ -63,21 +66,22 @@
 					console.log("svcFinished");
 					if(result_cd === 200) {
 						console.log("service finish success");
-				}
-				;
-			});
+						}
+						;
+					});
 		};
-	</script>
-	</head>
-	<body onload="init();">
 
-		<br><br>
+		</script>
+</head>
+<body onload="init();">
 
-	<!--
-		<img src="../static/img/koritori_start.jpg" name="koritori">
-	-->
+	<center>
+	<iframe width="1280" height="720" src="https://www.youtube.com/embed/ZTwtSYLNfWE?mute=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-		</center>
-	</body>
+	</center>
+</body>
+
 </html>
+
+
 

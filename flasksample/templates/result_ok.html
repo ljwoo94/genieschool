@@ -34,13 +34,27 @@
 					console.log("initialize success, appid:" + extra.appid);
 
 					//안내 TTS
-					sendTTS("오늘은 어떤 공부를 할까요~?");
-					//Delay 넣어보기. 1000ms 정도.
-					//location.href = '/selecting';
+					sendTTS("안녕하세요 지니쌤이에요!");
+					//location.href = '/greeting';
 
 				}
 			});
 		};
+
+		function initGreet() {
+
+
+			options = {};
+			options.apikey = "RTUwMDQwMTl8R0JPWERFVk18MTU3ODQ0Mzk3OTM0MA==";
+			options.keytype="GBOXDEVM";
+			gigagenie.init(options, function(result_cd, result_msg, extra) {
+					if(result_cd === 200) {
+						console.log("Greeting");
+						sendTTS("참 잘했어요~~ 오늘도 엄마가 좋아하시겠네요!");
+					}
+				});
+		};
+
 
 		function sendTTS(tts) {
 			options = {};
@@ -63,21 +77,16 @@
 					console.log("svcFinished");
 					if(result_cd === 200) {
 						console.log("service finish success");
-				}
-				;
-			});
+						}
+						;
+					});
 		};
-	</script>
-	</head>
-	<body onload="init();">
 
-		<br><br>
+		</script>
+		</head>
+		<body onload="init();">
 
-	<!--
-		<img src="../static/img/koritori_start.jpg" name="koritori">
-	-->
+			<h1>축하축하!!</h1>
 
-		</center>
-	</body>
-</html>
-
+		</body>
+	</html>

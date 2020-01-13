@@ -1,16 +1,112 @@
-{% extends 'layout.html' %}
+<html>
+	<head>
+		<meta http-equiv="Content-Type" Content="text/html; charset=utf-8"/>
+		<meta name="viewport" content="height=1080,width=1920,user-scalable=no"/>
 
-	{% block content %}
-	<body onload="initSelect();">
+		<link rel="stylesheet" href="../static/css/mainpage.css">
 
-	<br><br>
-	<center><h1>Genie School!!</h1><br>
-		
-		<h2>테마를 골라주세요</h2><br><br><br><br>
-		<input type='image' src="../static/img/polite_img.jpg" class='btn_theme' onclick=toPolite()>
-		<input type='image' src="../static/img/career_img.jpg" class='btn_theme' onclick=toCareer()>
-		<input type='image' src="../static/img/sec_img.jpg" class='btn_theme' onclick=toSecurity()>
+		<script type="text/javascript" src="https://svcapi.gigagenie.ai/sdk/v1.0/js/gigagenie.js"></script>
+		<script type="text/javascript">
+		var apistatus=0;
+		var options={};
+		var ws;
+		var status='NI';
+		var appid;
+		var containerid;
+		var wsstate=0;
+		var initstate=0;
+		var authcode;
 
-	</center>
-</body>
-{% endblock %}
+			function init() {
+
+			//sendTTS("안녕하세요 ");
+
+
+			options = {};
+			options.apikey = "RTUwMDQwMTl8R0JPWERFVk18MTU3ODQ0Mzk3OTM0MA==";
+			options.keytype="GBOXDEVM"; // 개발자모드를 설정하고 사용하세요.
+			gigagenie.init(options, function(result_cd, result_msg, extra) {
+				if (result_cd === 200) {
+					console.log("initialize success, appid:" + extra.appid);
+
+					//안내 TTS
+					sendTTS("기가지니, 예절 과 같은 방식으로 테마를 선택해 주세요.");
+
+					setVoiceFilter();
+					//location.href = '/greeting';
+
+				}
+			});
+		};
+
+			function sendTTS(tts) {
+			options = {};
+			options.ttstext = tts;
+			gigagenie.voice.sendTTS(options, function(result_cd, result_msg, extra) {
+					console.log("gigagenie.voice.sendTTS - result_cd:" + result_cd);
+					console.log("gigagenie.voice.sendTTS - result_msg:" + result_msg);
+					console.log("gigagenie.voice.sendTTS - extra:" + JSON.stringify(extra));					});
+		};
+
+		gigagenie.voice.onRequestClose = function() {
+			console.log("close event received");
+			alert("종료요청받음");
+			requestclose();
+		};
+
+		function requestclose() {
+			console.log("request close");
+			options={};
+			gigagenie.voice.svcFinished(options, function(result_cd, result_msg, extra) {
+					console.log("svcFinished");
+					if(result_cd === 200) {
+						console.log("service finish success");
+						}
+						;
+					});
+		};
+
+		function setVoiceFilter() {
+			options = {};
+			options.keyword = [ "예절", "직업", "안전" ];
+			gigagenie.voice.setVoiceFilter(options, function(result_cd, result_msg, extra) {
+			if (result_cd === 200) {
+				alert(result_cd);
+			}
+			console.log("gigagenie.voice.setVoiceFilter - result_cd:" + result_cd);
+			console.log("gigagenie.voice.setVoiceFilter - result_msg:" + result_msg);
+			console.log("gigagenie.voice.setVoiceFilter - extra:" + JSON.stringify(extra));
+			alert("설정 완료\nresult_cd=" + result_cd + "\nresult_msg=" + result_msg);
+			});
+		};
+
+		gigagenie.voice.onVoiceFilterMsg = function(msg) {
+			if(msg.indexOf("예절") >= 0) {
+				alert("예절모드 진입");
+				sendTTS('예절교육을 시작합니다');
+				location.href = "/polite_theme";
+			} else if(msg.indexOf("직업") >=0) {
+				alert("직업체험 진입");
+				sendTTS('직업체험을 시작합니다');
+				location.href = "/career_theme";
+			} else if (msg.indexOf("안전") >= 0) {
+				alert("안전교육 진입");
+				sendTTS('안전교육을 시작합니다');
+				location.href = "/sec_theme";
+			}
+		};
+
+</script>
+	</head>
+	<body onload=init()>
+		<br><br>
+		<center><h1>Genie School!!!!</h1><br>
+			<p>지니스쿨 메인 페이지 입니다.</p><br><br><br>
+			<br>
+			<h2>테마를 골라주세요</h2><br><br><br>
+			<input type='image' src="../static/img/polite_img.jpg" class='btn_theme' onclick=toPolite()>
+			<input type='image' src="../static/img/career_img.jpg" class='btn_theme'>
+			<input type='image' src="../static/img/sec_img.jpg" class='btn_theme'>
+		</center>
+	</body>
+</html>
