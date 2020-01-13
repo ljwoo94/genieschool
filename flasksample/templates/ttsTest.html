@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<center><h1>TTS Test sample </h1></center>
+<script type="text/javascript">
+	function pushBtn() {
+		document.getElementById("testbtn")[0].click();
+	};
+</script>
+<input type='button' onclick="sendTTS('버튼 눌림');" value="Button" id="testbtn" onload="pushBtn();"/>
+
+{% endblock %}

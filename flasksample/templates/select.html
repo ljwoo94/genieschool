@@ -1,0 +1,16 @@
+{% extends 'layout.html' %}
+
+	{% block content %}
+	<body onload="initSelect();">
+
+	<br><br>
+	<center><h1>Genie School!!</h1><br>
+		
+		<h2>테마를 골라주세요</h2><br><br><br><br>
+		<input type='image' src="../static/img/polite_img.jpg" class='btn_theme' onclick=toPolite()>
+		<input type='image' src="../static/img/career_img.jpg" class='btn_theme' onclick=toCareer()>
+		<input type='image' src="../static/img/sec_img.jpg" class='btn_theme' onclick=toSecurity()>
+
+	</center>
+</body>
+{% endblock %}
