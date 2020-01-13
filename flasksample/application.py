@@ -17,6 +17,9 @@ def selection():
 @app.route('/polite_theme')
 def polite():
 	return render_template('polite.html')
+@app.route('/polite_stream')
+def politeStream():
+	return render_template('polite_stream.html');
 
 @app.route('/career_theme')
 def career():

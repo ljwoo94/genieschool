@@ -36,8 +36,10 @@
 					//안내 TTS
 					sendTTS("오늘은 어떤 공부를 할까요~?");
 					//Delay 넣어보기. 1000ms 정도.
-					//location.href = '/selecting';
+					setTimeout(function() {
 
+						location.href = '/select';
+					},3000);
 				}
 			});
 		};

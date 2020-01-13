@@ -34,9 +34,11 @@
 					console.log("initialize success, appid:" + extra.appid);
 
 					//안내 TTS
-					sendTTS("안녕하세요 지니쌤이에요!");
-					//Delay 넣어보기. 1000ms 정도.
-					//location.href = '/greeting';
+					sendTTS("안녕하세요~~~ 지니쌤 이에요!");
+					setTimeout(function() {
+							
+						location.href = '/greeting';
+						},3000);
 
 				}
 			});
