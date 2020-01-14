@@ -1,13 +1,53 @@
 body {
-	background-image:url('../img/backimg.jpg');
 	background-color:white;
+	background-repeat:no-repeat;
+	background-size:cover;
+	font-family : "나눔스퀘어";
+
 }
 
-input.btn_theme {
-	
+.btn_theme {
+
 	background-repeat: no-repeat;
-	width: 200px;
-	height: 200px;
-	border: 2px red solid;
-	margin: 50px;
+	width: 250px;
+	height: 280px;
+	border: 4px solid pink;
+	margin: 20px 70px;
+}
+
+
+input.btn_GotoStart {
+	background-repeat : no-repeat;
+	width : 450px;
+	height : 300px;
+	margin: 150px;
+}
+
+
+header {
+	background-color:#FFC0CB;
+}
+
+div.logo_img {
+	width : 150px;
+	height : 90px;
+
+}
+
+section {
+	padding : 100px;
+	background-color :#FFCOCB;
+}
+
+footer {
+	padding : 100px 100px;
+
+}
+
+.aboutKT {
+	font-size : 20px;
+}
+
+.copyright {
+	font-size : 15px;
 }
