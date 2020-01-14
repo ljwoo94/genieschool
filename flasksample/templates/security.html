@@ -36,8 +36,7 @@
 					console.log("initialize success, appid:" + extra.appid);
 
 					//안내 TTS
-					sendTTS("오늘은 사람들을 구할 수 있는 ");
-					sendTTS("멋진 영웅이 되는 법을 배울거에요~");
+					sendTTS("오늘은 사람들을 구할 수 있는 멋진 영웅이 되는 법을 배울거에요~");
 					//setTimeout(function() {
 					//location.href = "/result";
 					//}, 5000);
@@ -88,14 +87,14 @@
 			fullscreen: '{ enabled: true, fallback: true, iosNative: false }',
 			});
 		player.fullscreen.enter();
-
-        setTimeout(function(){
-            player.play();
-        },1000);
+		player.play();
+        //setTimeout(function(){
+        //    player.play();
+        //},1000);
 
         setTimeout(function() {
           location.href = "/security_stream";
-        },10000);
+        },50000);
 
     </script>
 
