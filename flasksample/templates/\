@@ -10,6 +10,10 @@
 
 		<script src="https://cdn.plyr.io/3.5.6/plyr.polyfilled.js"></script>
 		
+		<script src="../static/js/html2canvas.js"></script>
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.1.0.js"></script>
+		<script src="../static/js/ImageCapture.js"></script>
 
 		<title>Genie School KT Project</title>
 
@@ -82,7 +86,7 @@
 <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
 <center>	
 <div id="player"></div>
-<canvas id="canvas" width="10" height= "10"></canvas>
+<canvas id="canvas" width=200 ></canvas>
 </center>
 		<script>
 		// 2. This code loads the IFrame Player API code asynchronously.
@@ -125,7 +129,35 @@
 	           done = true;
 		        }
 	     }
-				
+	
+	$(window).load(function() {
+			var imgCapture = new ImageCapture();
+			setTimeout(function() {
+				alert("Captured Now");
+				imgCapture.capture({target:"#player", container: "#canvas", width: 200});
+				}, 10000);
+			}
+		function saveAs(uri, filename) {
+			var link = document.createElement('a');
+			if(typeof link.download === 'string') 
+			{ 
+			link.href = uri; 
+			link.download = filename; 
+			document.body.appendChild(link); 
+			link.click(); document.body.removeChild(link); 
+			} else { 
+			window.open(uri); 
+			} 
+		}
+		setTimeout(function() {
+			alert("save Captured data");
+			html2canvas(document.getElementById("canvas").then(function (canvas) {
+						saveAs(canvas.toDataURL(), 'myCapture.jpg');
+						}).catch(function(err) {
+							alert(err);
+							});
+		}
+
     </script>
 </body>
 </html>

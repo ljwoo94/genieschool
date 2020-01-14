@@ -77,27 +77,44 @@
 </head>
 <body onload="init();">
 
-    <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="4zrHnJmNebw"></div>
+   <!-- The <iframe> (and video player) will replace this <div> tag. -->
+<center>	
+<div id="player"></div>
+</center>
+		<script>
+		var tag = document.createElement('script');
 
-    <script type="text/javascript">
+		tag.src = "https://www.youtube.com/iframe_api";
+		var firstScriptTag = document.getElementsByTagName('script')[0];
+		firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-        const player = new Plyr('#player', {
-			autoplay: 'true',
-			fullscreen: '{ enabled: true, fallback: true, iosNative: false }',
-			});
-		player.fullscreen.enter();
+		var player;
+		function onYouTubeIframeAPIReady() {
+		    player = new YT.Player('player', {
+		         height: '1200',
+		         width: '1600',
+		         videoId: '4zrHnJmNebw',
+		         events: {
+		           'onReady': onPlayerReady,
+		           'onStateChange': onPlayerStateChange
+		         }
+		     });
+			player.setOption('cc', 'reload', null);
+		}
 
-        setTimeout(function(){
-            player.play();
-			player.play();
-			player.play();
-        },1000);
+    function onPlayerReady(event) {
+		          event.target.playVideo();
+				        }
 
-        setTimeout(function() {
-          location.href = "/polite_stream";
-        },60000);
-
+      var done = false;
+	function onPlayerStateChange(event) {
+	       if (event.data == YT.PlayerState.PLAYING && !done) {
+	          setTimeout(function() {
+					  location.href = '/polite_stream';
+					  }, 30000);
+	           done = true;
+		        }
+	     }
     </script>
-
 </body>
 </html>

@@ -41,21 +41,6 @@
 			});
 		};
 
-		function initGreet() {
-
-
-			options = {};
-			options.apikey = "RTUwMDQwMTl8R0JPWERFVk18MTU3ODQ0Mzk3OTM0MA==";
-			options.keytype="GBOXDEVM";
-			gigagenie.init(options, function(result_cd, result_msg, extra) {
-					if(result_cd === 200) {
-						console.log("Greeting");
-						sendTTS("참 잘했어요~~ 오늘도 엄마가 좋아하시겠네요!");
-					}
-				});
-		};
-
-
 		function sendTTS(tts) {
 			options = {};
 			options.ttstext = tts;
@@ -78,7 +63,7 @@
 					if(result_cd === 200) {
 						console.log("service finish success");
 						}
-						;
+						
 					});
 		};
 
