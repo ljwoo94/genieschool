@@ -4,13 +4,13 @@
 
 - *Giga Genie API(JS)*
   - *TTS, onVoiceFilterMSG*
-  - ![GenieAPI](image/GenieAPI.JPG)
+  ![GenieAPI](image/GenieAPI.JPG)
 - *KT Cloud*
   - *Main Server and rtmp Server(youtube)*
-  - ![KTcoud](image/KTcoud.JPG)
+  ![KTcoud](image/KTcoud.JPG)
 - *Alpha Pose*
   - *Pose Estimation*
-  - ![alpha_pose](image/alpha_pose.JPG)
+  ![alpha_pose](image/alpha_pose.JPG)
 - *Flask*
 
 ### 2. Pages
