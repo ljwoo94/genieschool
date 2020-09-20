@@ -4,13 +4,13 @@
 
 - *Giga Genie API(JS)*
   - *TTS, onVoiceFilterMSG*
-  - ![GenieAPI](D:\JW\2019_KTIntern\genie_school\genieschool\image\GenieAPI.JPG)
+  - ![GenieAPI](image\GenieAPI.JPG)
 - *KT Cloud*
   - *Main Server and rtmp Server(youtube)*
-  - ![KTcoud](D:\JW\2019_KTIntern\genie_school\genieschool\image\KTcoud.JPG)
+  - ![KTcoud](image\KTcoud.JPG)
 - *Alpha Pose*
   - *Pose Estimation*
-  - ![alpha_pose](D:\JW\2019_KTIntern\genie_school\genieschool\image\alpha_pose.JPG)
+  - ![alpha_pose](image\alpha_pose.JPG)
 - *Flask*
 
 ### 2. Pages
@@ -24,7 +24,7 @@
 
 ### 3. Pose Estimation
 
-![pose_estimation](D:\JW\2019_KTIntern\genie_school\genieschool\image\pose_estimation.JPG)
+![pose_estimation](image\pose_estimation.JPG)
 
 ### 4. Comment
 
